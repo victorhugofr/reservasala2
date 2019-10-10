@@ -1,0 +1,95 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+<link rel="stylesheet"
+	href="https://fonts.googleapis.com/css?family=Raleway" />
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+	<style>
+.dropbtn {
+  background-color: white;
+  color: black;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: gray;}
+</style>
+<h:head>
+</h:head>
+<h:body>
+	<h1>RESERVA DE SALA</h1>
+		<div class="w3-white w3-card" id="myNavbar" style="max-height: 60px;">
+			<!-- 				<a href="#home" class="w3-bar-item w3-button w3-wide"><span -->
+			<!-- 					style="font-size: 22px;">SIGCAR</span></a> -->
+			<!-- Right-sided navbar links -->
+			<h:form>
+				<div class="dropdown">
+					<button class="dropbtn">Usuário</button>
+					<div class="dropdown-content">
+						<a href="/reservasala/pages/usuarios/novo.jsf"> Novo</a>
+						<h:commandLink ajax="false"
+							action="#{usuarioMBean.listarUsuarios}">
+							<h:outputText value="Listar" />
+						</h:commandLink>
+					</div>
+				</div>
+				<div class="dropdown">
+				<button class="dropbtn">Reserva</button>
+				<div class="dropdown-content">
+					<a href="/reservasala/pages/reserva/cadastrar.jsf"> Nova reserva</a>
+					<h:commandLink ajax="false"
+							action="#{reservaMBean.listarReservas}">
+							<h:outputText value="Listar reservas" />
+						</h:commandLink>
+				</div>
+			</div>
+			
+			<div class="dropdown">
+				<button class="dropbtn">Sala</button>
+				<div class="dropdown-content">
+					<a href="/reservasala/pages/sala/cadastrar.jsf"> Nova sala</a>
+					<h:commandLink ajax="false"
+							action="#{salaMBean.listarSala}">
+							<h:outputText value="Listar salas" />
+						</h:commandLink>
+				</div>
+			</div>
+			</h:form>
+		</div>
+	<div id="content" class="">
+		<ui:insert name="conteudo">Conteúdo</ui:insert>
+	</div>
+</h:body>
+
+</html>
